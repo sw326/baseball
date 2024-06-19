@@ -13,6 +13,28 @@ function getRandomInt(min, max) {
 
     return randomNum
 }
+
+// 볼과 스트라이크 계산
+function getBallStrikeCount(userInput, computerNumber) {
+    let balls = 0;
+    let strikes = 0;
+
+    // 스트라이크 계산
+    for (let i = 0; i < 3; i++) {
+        if (userInput[i] === computerNumber[i]) {
+            strikes++;
+        }
+    }
+
+    // 볼 계산
+    for (let i = 0; i < 3; i++) {
+        if (userInput[i] !== computerNumber[i] && computerNumber.includes(userInput[i])) {
+            balls++;
+        }
+    }
+
+    return { balls, strikes };
+}
     //100 이상 999 이하의 각 자릿수가 서로 다른 세 자리 수 생성
     let randomNum = getRandomInt(100, 999);
     console.log(randomNum);
